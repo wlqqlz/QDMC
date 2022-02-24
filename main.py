@@ -25,8 +25,8 @@ def main():
                 dims = NBR_OF_DIMENSIONS,
                 element = "Hydrogen")
 
-    with open('results.data', mode="w+") as f:
-        with open('walkers.data', mode="w+") as w:
+    with open('results.txt', mode="w+") as f:
+        with open('walkers.txt', mode="w+") as w:
 
             print("Simulation started.")
             ################## START SIMULATION ##################
@@ -37,7 +37,7 @@ def main():
 
                 # Print walkers
                 if SAVE_WALKERS:
-                    print_walkers_to_file(state.walkers, time, w)
+                    print_walkers_to_file(state.walkers, time, w, dims=NBR_OF_DIMENSIONS)
 
                 # Perform diffusion Monte Carlo without importance sampling
                 state = dmc(state = state,

@@ -28,7 +28,7 @@ class Atom:
         # Set walkers
         self.walkers            = walkers if walkers else self.make_walkers(nbr_of_walkers)        
         self.nbr_of_walkers     = nbr_of_walkers if nbr_of_walkers else len(self.walkers)
-        self.max_walker_id      = self.nbr_of_walkers
+        self.max_walker_id      = self.nbr_of_walkers - 1
 
         # Walker derived values
         self.positions      = self.make_positions()
@@ -58,7 +58,7 @@ class Atom:
             position = np.random.uniform(-2, 2, self.dims)
 
             # Create the walker with an identification number
-            walker = Walker(id=_, position = position)
+            walker = Walker(id=_, position = position, dims=self.dims)
 
             walkers.append(walker)
 

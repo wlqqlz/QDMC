@@ -173,8 +173,8 @@ def branch_state(state, merits):
 
     return new_state
 
-def print_walkers_to_file(walkers, time, file):
-    """Function to print 1D walkers to a file, along with the current iteration.
+def print_walkers_to_file(walkers, time, file, dims=1):
+    """Function to print walkers to a file, along with the current iteration.
     
     Arguments:
         walkers {list} -- List of Walker objects
@@ -184,4 +184,7 @@ def print_walkers_to_file(walkers, time, file):
     
     # Print walker id, time of position, position.
     for walker in walkers:
-        file.write("%d\t%f\t%+.4f\n" % (walker.id, time, walker.position[0]))
+        file.write("%d\t%f\t" % (walker.id, time))
+        for dim in range(dims):
+            file.write("%+.4f, " % (walker.position[dim]))
+        file.write('\n')
